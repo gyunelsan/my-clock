@@ -1,0 +1,233 @@
+:root {
+    --bg-color-light: #f9f9f9;
+    --text-color-light: #333;
+    --bg-color-dark: #333;
+    --text-color-dark: #f9f9f9;
+    --button-bg-light: #ccc;
+    --button-bg-dark: #555;
+    --circle-color-light: #fff;
+    --circle-color-dark: #4ca3af;
+    --border-color-light: #8a8a8a;
+    --border-color-dark: #f9f9f9;
+    --icon-color-light: #333;
+    --icon-color-dark: #f9f9f9;
+    --clock-font-size-desktop: 6rem;
+    --clock-font-size-mobile: 3rem;
+    --main-font:'Orbitron', sans-serif;
+
+}
+
+body {
+    font-family: var(--main-font);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.title {
+    
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+    margin-bottom: 20px;
+    transition: color 0.3s;
+}
+
+body.dark-mode .title {
+    color: var(--text-color-dark);
+}
+
+.clock-container {
+    text-align: center;
+    width: 40%;
+    padding: 40px 60px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.692);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1s ease-out;
+}
+
+.clock {
+    font-size: var(--clock-font-size-desktop);
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Toggle wrapper */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+/* Icons */
+.icon {
+    color: var(--icon-color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+body.dark-mode .icon {
+    color: var(--icon-color-dark);
+}
+
+/* Toggle button */
+.toggle-button {
+    width: 60px;
+    height: 30px;
+    background-color: var(--button-bg-light);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-circle {
+    width: 26px;
+    height: 26px;
+    background-color: var(--circle-color-light);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-mode .toggle-button {
+    background-color: var(--button-bg-dark);
+}
+
+body.dark-mode .toggle-circle {
+    transform: translateX(30px);  /* Изменение позиции круга */
+    background-color: var(--circle-color-dark);
+}
+
+.toggle-button:hover .toggle-circle {
+    animation: pulse 1s infinite;
+}
+
+/* Анимация пульсации для круга */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+body.dark-mode .toggle-button {
+    background-color: var(--button-bg-dark);
+}
+
+body.dark-mode .toggle-circle {
+    transform: translateX(30px);
+    background-color: var(--circle-color-dark);
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .clock-container {
+    border-color: var(--border-color-dark);
+    box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.705);
+}
+
+/* Респонсивность */
+@media (max-width: 1200px) {
+    .clock {
+        font-size: var(--clock-font-size-mobile);
+    }
+
+    .clock-container {
+        width: 50%;
+        padding: 20px 30px;
+    }
+
+    .toggle-button {
+        width: 50px;
+        height: 25px;
+    }
+
+    .toggle-circle {
+        width: 22px;
+        height: 22px;
+        top: 1.5px;
+        left: 1.5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .clock {
+        font-size: var(--clock-font-size-mobile);
+    }
+
+    .clock-container {
+        width: 50%;
+        padding: 20px 30px;
+    }
+
+    .toggle-button {
+        width: 50px;
+        height: 25px;
+    }
+
+    .toggle-circle {
+        width: 22px;
+        height: 22px;
+        top: 1.5px;
+        left: 1.5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .clock {
+        font-size: var(--clock-font-size-mobile);
+    }
+
+    .clock-container {
+        width: 70%;
+        padding: 20px 30px;
+    }
+
+    .toggle-button {
+        width: 50px;
+        height: 25px;
+    }
+
+    .toggle-circle {
+        width: 22px;
+        height: 22px;
+        top: 1.5px;
+        left: 1.5px;
+    }
+}
+
